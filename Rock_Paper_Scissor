@@ -1,0 +1,52 @@
+import random
+print("Welcome to ROck Paper Scissors")
+
+round=4
+i=1
+User_point=0
+Computer_point=0
+
+while i<=round:
+    try:
+        your_turn = int(input("Your turn (0, 1, or 2): "))
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        continue
+
+    if your_turn<0 or your_turn>2:
+        print("Invalid choice. Please enter the 0(Rock), 1(Paper), or")
+        continue
+    
+
+    computer_turn = random.randint(0,2)
+
+
+    if your_turn==0:
+        print("Rock")
+    elif your_turn==1:
+        print("paper")
+    else:
+        print("Scissor")
+
+
+    if your_turn==computer_turn:
+        print("It's a drow!")
+    elif(your_turn==0 and computer_turn==2) or \
+        (your_turn==1 and computer_turn==0) or \
+        (your_turn==2 and computer_turn==1):
+        print("Congratulations! You won!")
+        User_point=User_point+1
+
+    else:
+        print("OOps! The computer won. Better luck next time!")
+        Computer_point=computer_turn+1
+
+    i = i+1
+
+if User_point>Computer_point:
+    print(f"\nCongratulation! You won by {User_point-Computer_point} point.")
+elif User_point<Computer_point:
+    print(f"\nOops! you lose by {Computer_point-User_point} point.")
+else:
+    print(f"\nOops! It's a Drow with {Computer_point} point.")
+print("\n Game over! Thanks for playing.")
